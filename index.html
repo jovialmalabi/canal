@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеоплеер с переключением ссылок</title>
+    <!-- Подключение стилей Video.js -->
+    <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #5a5b5c; /* Серый фон для всего документа */
+        }
+        .video-container {
+            margin: 30px auto;
+            max-width: 650px;
+            background-color: #d4d4d4; /* Белый фон для контейнера видео, чтобы выделить его на сером фоне */
+            padding: 20px; /* Добавление отступов для лучшего внешнего вида */
+            border-radius: 6px; /* Закругление углов контейнера */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+        }
+        .icon-bar {
+            margin-top: 20px;
+        }
+        .icon-bar img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <!-- Видеоплеер Video.js -->
+        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360">
+            <source src="https://path/to/your/first.m3u8" type="application/x-mpegURL">
+        </video>
+        <div class="icon-bar">
+            <!-- Иконки для переключения ссылок -->
+            <img src="circle-1.svg" alt="Video 1" onclick="changeVideo('http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=bs15')">
+            <img src="circle-2.svg" alt="Video 2" onclick="changeVideo('https://streaming.televizor-24-tochka.ru/live/296.m3u8')">
+            <img src="circle-3.svg" alt="Video 3" onclick="changeVideo('https://player.smotrim.ru/iframe/stream/live_id/2961')">
+            <img src="circle-4.svg" alt="Video 4" onclick="changeVideo('https://streaming.skynetconnect.online/live/210.m3u8')">
+            <img src="circle-5.svg" alt="Video 5" onclick="changeVideo('https://stmv1.srvif.com/animetv/animetv/playlist.m3u8')">
+            <img src="circle-6.svg" alt="Video 6" onclick="changeVideo('http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs16')">
+            <img src="circle-7.svg" alt="Video 7" onclick="changeVideo('http://bozztv.com/gin-trn09/gin-turkfoxtv/tracks-v1a1/mono.m3u8')">
+            <img src="xy7W0wD.png" alt="Video 8" onclick="changeVideo('https://4kuhls.persiana.live/hls/stream.m3u8')">
+            <img src="circle-9.svg" alt="Video 9" onclick="changeVideo('https://live.creacast.com/radio21/smil:radio21.smil/playlist.m3u8')">
+        </div>
+    </div>
+
+    <!-- Подключение скриптов Video.js -->
+    <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
+    <script>
+        // Функция для смены видео
+        function changeVideo(src) {
+            var player = videojs('videoPlayer');
+            player.src({ type: 'application/x-mpegURL', src: src });
+            player.play();
+        }
+    </script>
+</body>
+</html>
